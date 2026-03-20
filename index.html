@@ -245,7 +245,7 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
     <div class="ni" onclick="nav('model','Detailed Model','Financial Model · FY27',this)"><span class="ni-ico">📊</span>Detailed Model<span class="ni-dot wip"></span></div>
     <div class="sb-div"></div>
     <div class="sb-grp"><div class="sb-grp-lbl">Business Units</div></div>
-    <div class="ni" onclick="nav('c2c','C2C + D2C Retail','Transaction Business',this)"><span class="ni-ico">🛒</span>C2C + D2C Retail<span class="ni-dot wip"></span></div>
+    <div class="ni" onclick="nav('c2c','C2C + D2C Retail','Captive Financing · GS + D2C',this)"><span class="ni-ico">🛒</span>C2C + D2C Retail<span class="ni-dot done"></span></div>
     <div class="ni" onclick="nav('dcf','DCF','Dealer Consumer Financing · FY27',this)"><span class="ni-ico">💳</span>DCF<span class="ni-dot done"></span></div>
     <div class="ni" onclick="nav('refi','Refinance + Cash','Refi &amp; Cash Loans',this)"><span class="ni-ico">🔄</span>Refinance + Cash<span class="ni-dot done"></span></div>
     <div class="ni" onclick="nav('buyback','Buyback','Buyback 101 · Strategy &amp; Intelligence',this)"><span class="ni-ico">🔁</span>Buyback<span class="ni-dot done"></span></div>
@@ -331,7 +331,7 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
 <div class="sec" id="s-lending">
   <div class="tabbar">
     <div class="tab active" onclick="tab('lending','why',this)">1️⃣ Why Lending?</div>
-    <div class="tab" onclick="tab('lending','moats',this)">2️⃣ Our Moats</div>
+    <div class="tab" active" onclick="tab('lending','moats',this)">2️⃣ Our Moats</div>
     <div class="tab" onclick="tab('lending','roa',this)">3️⃣ Risk &amp; Reward</div>
     <div class="tab" onclick="tab('lending','portfolio',this)">4️⃣ Portfolio Health</div>
     <div class="tab" onclick="tab('lending','liquidity',this)">5️⃣ Liquidity &amp; Capital</div>
@@ -1103,7 +1103,7 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
 <div class="sec" id="s-model">
   <div class="tabbar">
     <div class="tab active" onclick="tab('model','pl',this)">📊 P&amp;L Summary</div>
-    <div class="tab" onclick="tab('model','bu',this)">🏢 BU-wise Model</div>
+    <div class="tab" active" onclick="tab('model','bu',this)">🏢 BU-wise Model</div>
     <div class="tab" onclick="tab('model','quarterly',this)">📅 Quarterly Phasing</div>
   </div>
   <div class="sub active" id="model-pl">
@@ -1157,8 +1157,8 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
 
 <div class="sec" id="s-refi">
   <div class="tabbar">
-    <div class="tab active" onclick="tab('refi','shape',this)">📊 Last 6 Months</div>
-    <div class="tab" onclick="tab('refi','experiments',this)">🧪 Experiments &amp; Learnings</div>
+    <div class="tab" active" onclick="tab('refi','shape',this)">📊 Last 6 Months</div>
+    <div class="tab active" onclick="tab('refi','experiments',this)">🧪 Experiments &amp; Learnings</div>
     <div class="tab" onclick="tab('refi','battles',this)">⚔️ Current Battles</div>
     <div class="tab" onclick="tab('refi','pmf',this)">🎯 PMF Discovery</div>
     <div class="tab" onclick="tab('refi','reset',this)">🔄 Strategic Reset</div>
@@ -3070,7 +3070,8 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
 
 
 <!-- ═══ PIVOT TO PA MODEL ═══ -->
-      <div class="sub" id="refi-pa">
+    
+  <div class="sub" id="refi-pa">
     <!-- Status legend -->
     <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;background:var(--g50);border-radius:8px;padding:8px 14px;margin-bottom:14px;font-size:11px;color:var(--g600)">
       <span style="font-weight:600">Status:</span>
@@ -3524,14 +3525,15 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
 
 <div class="sec" id="s-ds">
   <div class="tabbar">
-    <div class="tab active" onclick="tab('ds','philosophy',this)">🧭 Philosophy &amp; Themes</div>
-    <div class="tab" onclick="tab('ds','pillars',this)">🏛️ Projects by Pillar</div>
+    <div class="tab" active" onclick="tab('ds','philosophy',this)">🧭 Philosophy &amp; Themes</div>
+    <div class="tab active" onclick="tab('ds','pillars',this)">🏛️ Projects by Pillar</div>
     <div class="tab" onclick="tab('ds','pecking',this)">📐 Pecking Order</div>
     <div class="tab" onclick="tab('ds','northstars',this)">⭐ North Stars</div>
     <div class="tab" onclick="tab('ds','projects',this)">🛠️ All Projects</div>
   </div>
 
   <!-- ══ TAB 1: PHILOSOPHY ══ -->
+
   <div class="sub active" id="ds-philosophy">
     <div class="sh"><h2>Philosophy &amp; Themes — FY27</h2><div class="sh-line"></div><span class="sh-tag">Data Science · Annual Operating Plan</span></div>
 
@@ -4853,17 +4855,18 @@ html,body{height:100%;overflow:hidden;font-family:'Geist',system-ui,sans-serif;b
 </div>
 
 <script>
-const SECS={c2c:'C2C + D2C Retail'};
+const SECS={};
 Object.entries(SECS).forEach(([id,name])=>{
   const el=document.createElement('div');
   el.className='sec';el.id='s-'+id;
   el.innerHTML=`
   <div class="tabbar">
     <div class="tab active" onclick="tab('${id}','philosophy',this)">🧭 Philosophy</div>
-    <div class="tab" onclick="tab('${id}','themes',this)">🎯 Key Themes</div>
+    <div class="tab" active" onclick="tab('${id}','themes',this)">🎯 Key Themes</div>
     <div class="tab" onclick="tab('${id}','northstars',this)">⭐ North Stars</div>
     <div class="tab" onclick="tab('${id}','projects',this)">🛠️ Projects</div>
   </div>
+
   <div class="sub active" id="${id}-philosophy">
     <div class="sh"><h2>Philosophy · FY27</h2><div class="sh-line"></div><span class="sh-tag">${name}</span></div>
     <div class="philosophy">
@@ -4948,10 +4951,746 @@ function tab(secId,tabId,el){
 }
 </script>
 
+<div class="sec" id="s-c2c">
+  <div class="tabbar">
+    <div class="tab active" onclick="tab('c2c','philosophy',this)">🧭 Philosophy</div>
+    <div class="tab" onclick="tab('c2c','moats',this)">🛡️ Moats</div>
+    <div class="tab" onclick="tab('c2c','fy26',this)">📊 FY26 Performance</div>
+    <div class="tab" onclick="tab('c2c','fy27',this)">🎯 FY27 Plan</div>
+    <div class="tab" onclick="tab('c2c','areas',this)">🔑 Key Areas to Crack</div>
+    <div class="tab" onclick="tab('c2c','pillars',this)">🏛️ 5 Pillars</div>
+    <div class="tab" onclick="tab('c2c','projects',this)">🛠️ Projects</div>
+  </div>
+  <div class="sub active" id="c2c-philosophy">
+  <div style="background:var(--night);border-radius:14px;padding:18px 24px;margin-bottom:14px;border-top:3px solid var(--cobalt)">
+    <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt-l);margin-bottom:4px">C2C + D2C RETAIL · CORE DOCTRINE</div>
+    <div style="font-size:16px;font-weight:900;color:#fff;margin-bottom:5px">Captive Financier at the Point of Transaction</div>
+    <div style="font-size:11.5px;color:rgba(255,255,255,.5);margin-bottom:14px">Two paramount metrics governing all decisions: <strong style="color:var(--cobalt-l)">Attach Rate / Share of Wallet</strong> and <strong style="color:var(--cobalt-l)">Income per Disbursal</strong></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px">
+      <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:900;color:var(--gold)">₹50K</div><div style="font-size:9.5px;color:rgba(255,255,255,.4);margin-top:3px">EBITDA/car target</div></div>
+      <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:900;color:var(--cobalt)">55%</div><div style="font-size:9.5px;color:rgba(255,255,255,.4);margin-top:3px">Inhouse attach target</div></div>
+      <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:900;color:var(--mint)">70%</div><div style="font-size:9.5px;color:rgba(255,255,255,.4);margin-top:3px">AI-driven engagement</div></div>
+      <div style="background:rgba(255,255,255,.06);border-radius:8px;padding:10px;text-align:center"><div style="font-size:18px;font-weight:900;color:var(--neg)">&lt;2hr</div><div style="font-size:9.5px;color:rgba(255,255,255,.4);margin-top:3px">L2D TAT P70</div></div>
+    </div>
+  </div>
+
+  <div class="sh"><h2>Core Doctrine — Governing Principles</h2><div class="sh-line"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);margin-bottom:9px">Strategic Identity</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Captive financier model</b> — structural right to be first lender at point of sale; no external lender can access the buyer at this moment</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Two paramount metrics</b>: attach rate / share of wallet AND income per disbursal — every strategy traces back to moving one or both</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Inhouse-first, Pmaxx as backstop</b> — 65% of Pmaxx disbursals are inhouse-rejected customers confirming this structural role</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Two-part mandate</b>: (1) create more CF pie via new products, cohorts, tenures; (2) capture max share — 73% C2C and 67% D2C buyers express loan interest</span></div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);margin-bottom:9px">Operating Principles</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Risk is a growth input</b> — better risk classification (v5→v6, SMS data, CIBIL bins) unlocks more volume at better pricing simultaneously</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>AI at scale is the FY27 operating model</b> — target 70% of customer engagement AI-driven; compress variable costs as volume scales</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>EBITDA formula</b>: EBITDA per car = EBITDA per disbursal × internal attach rate. ₹40K = ₹90K/disbursal × 44%</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Path to ₹50K per car</b>: (1) AI cost reduction, (2) attach beyond 60% CF-pie capture, (3) cross-sell Refi/LAC/PL/topup/credit line/buyback</span></div>
+    </div>
+  </div>
+
+  <div class="sh"><h2>GS / C2C Principles</h2><div class="sh-line"></div></div>
+  <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:13px 15px;margin-bottom:12px">
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Good cohort is the strategic cornerstone</b> — 14% of bookings but 60% of deliveries at 75% attach rate. BC2V target 58–60%, long-term aspiration 75%</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Procurement is a financing decision</b> — every ₹1L drop in ASP reduces ALP and compresses all per-disbursal metrics. Tenure multiplier falls with older car procurement</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>LFF income structure is a structural advantage</b> — CHM, Protekt, MI, FWR, PF charges bundled into financing create ~5.7% Pmaxx gross margin DSA models cannot replicate</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>High-ASP lens must govern procurement</b> — sub-₹3L car share at 25% (up 5pp in 2 months) is a direct income threat at the disbursal level</span></div>
+  </div>
+
+  <div class="sh"><h2>D2C Marketplace Principles</h2><div class="sh-line"></div></div>
+  <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:13px 15px">
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Pure facilitator</b> — CF income and VAS income are the only monetisation levers. Every decision maximises attach rate and income per disbursal</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Share of wallet target FY27: 50%</b> (currently ~35% inhouse). Income per disbursal target: ₹90K. Jan'26 inhouse share already at 93% (vs 80% Apr'25)</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>High-ASP listings are first-order</b> — ALP on D2C is ₹5.46L in Jan'26. Any ASP deterioration directly compresses the only income streams available</span></div>
+    <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Regional consistency is non-negotiable</b> — Delhi consistently underperforms on CF attach vs all other regions. Treated as an operations failure to solve, not a market characteristic</span></div>
+  </div>
+</div>
+  <div class="sub" id="c2c-moats">
+  <div class="sh"><h2>Structural Moats</h2><div class="sh-line"></div><span class="sh-tag">Advantages rooted in position and access that competitors cannot replicate</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div style="background:var(--white);border:1.5px solid rgba(77,62,255,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--cobalt);margin-bottom:8px">🏢 Captive Position at Point of Sale</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">In GS retail, the company is the seller — no external lender can access the buyer at this moment. In D2C, platform ownership creates a two-sided engagement advantage over standalone DSAs.</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid rgba(77,62,255,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--cobalt);margin-bottom:8px">👁️ Full Transaction Visibility</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">Knowing the car (RC, inspection, age, pricing), the seller, and the buyer in one system makes credit decisions faster and more accurate than any external bank or NBFC.</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid rgba(77,62,255,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--cobalt);margin-bottom:8px">💰 VAS Bundle Embedded in Financing</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">CHM, Protekt, MI, FWR, Pocket Insurance alongside the loan generates ~5.6–5.8% VAS-on-TLA income. Pmaxx VAS grew from 1.01% (Apr'25) to 2.08% (Dec'25) of total disbursals.</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid rgba(77,62,255,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--cobalt);margin-bottom:8px">🏦 Bajaj Co-Lending CoF Advantage</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">~8.04% vs 8.35% prior. Switching cost is 4 months — creating a defensible position while scale-up completes.</div>
+    </div>
+  </div>
+
+  <div class="sh"><h2>Risk & Data Moats</h2><div class="sh-line"></div><span class="sh-tag">Proprietary data and model advantages that compound with every vintage</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div style="background:var(--white);border:1.5px solid rgba(0,200,150,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--mint);margin-bottom:8px">🤖 Risk Model v6 + BRE</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">GCBL share on form fill <strong>+16.5%</strong> while 90+DPD at 12MOB <strong>drops 54%</strong>. More approvals and better quality simultaneously — a compound moat.</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid rgba(0,200,150,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--mint);margin-bottom:8px">📱 SMS-Based Alternate Data</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7"><strong>20% of customers</strong> better classified vs bureau-only models; 7% clear unlock established in FY26. Data no external lender can access.</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid rgba(0,200,150,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--mint);margin-bottom:8px">🎯 Multi-Source Credit Decisioning</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">CIBIL + Experian + SMS + AA banking + scanned banking + appography. A flywheel that deepens with every vintage cohort.</div>
+    </div>
+    <div style="background:var(--white);border:1.5px solid rgba(0,200,150,.2);border-radius:var(--r);padding:13px 15px">
+      <div style="font-size:11px;font-weight:800;color:var(--mint);margin-bottom:8px">📊 Risk Bucket Engineering</div>
+      <div style="font-size:11.5px;color:var(--g700);line-height:1.7">A-bucket share on disbursals moved from <strong>63% (Sep'25) → 73% (Dec'25)</strong>. Portfolio increasingly self-funds at lower CoD, improving margins structurally.</div>
+    </div>
+  </div>
+
+  <div class="sh"><h2>Unit Economics & Tech Moats</h2><div class="sh-line"></div><span class="sh-tag">Financial advantages that widen as scale increases</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gold);margin-bottom:6px">Unit Economics</div>
+      <div style="font-size:11px;color:var(--g700);line-height:1.7">● Gross margin <strong>21.9%</strong> (C2C) vs Spinny <strong>9.5%</strong> — 2x+ benchmark<br/>● Inhouse share: C2C 89%, D2C 93%<br/>● Opex-to-disbursal <strong>4%</strong> (from 8.2%)<br/>● EBITDA per car ₹14K → ₹40K → ₹50K target</div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);margin-bottom:6px">Saarathi Platform</div>
+      <div style="font-size:11px;color:var(--g700);line-height:1.7">● PAN India since Aug'25<br/>● Proprietary underwriting + ops stack<br/>● AA banking at 52%; scanned down to 2%<br/>● Creates switching costs and data moat</div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--mint);margin-bottom:6px">AI & Speed Moat</div>
+      <div style="font-size:11px;color:var(--g700);line-height:1.7">● <strong>77%</strong> decisions in under 2 minutes<br/>● <strong>92%</strong> first-time-right at token base<br/>● AI calling on 50% of sourcing base<br/>● Cost advantage scales with volume, not headcount</div>
+    </div>
+  </div>
+</div>
+  <div class="sub" id="c2c-fy26">
+  <div class="sh"><h2>Consolidated — Apr'25 vs Jan'26</h2><div class="sh-line"></div><span class="sh-tag">Combined GS + D2C lending business</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:14px">
+    <div style="background:var(--cobalt-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Total Disbursals (incl Pmaxx)</div>
+  <div style="font-size:19px;font-weight:900;color:var(--cobalt);line-height:1">₹121.9 Cr</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ₹81.2 Cr · +50%</div>
+</div>
+    <div style="background:var(--mint-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Own Book Disbursals</div>
+  <div style="font-size:19px;font-weight:900;color:var(--mint);line-height:1">₹109.6 Cr</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ₹65.2 Cr · +68%</div>
+</div>
+    <div style="background:var(--gold-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">C2C Inhouse EBITDA</div>
+  <div style="font-size:19px;font-weight:900;color:var(--gold);line-height:1">₹1,766 L</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ₹492 L · +259%</div>
+</div>
+    <div style="background:var(--pos-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">D2C EBITDA</div>
+  <div style="font-size:19px;font-weight:900;color:var(--pos);line-height:1">₹173 L</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">Turned positive from -₹89 L</div>
+</div>
+  </div>
+
+  <div class="sh"><h2>GS / C2C Performance</h2><div class="sh-line"></div><span class="sh-tag">Apr'25 vs Jan'26</span></div>
+  <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--g100);margin-bottom:14px">
+    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+      <thead><tr style="background:var(--night)"><th style="padding:7px 12px;text-align:left;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Metric</th><th style="padding:7px 12px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Apr'25</th><th style="padding:7px 12px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Jan'26</th><th style="padding:7px 12px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Change</th></tr></thead>
+      <tbody>
+        <tr><td colspan="4" style="padding:5px 12px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);background:var(--cobalt-bg);border:1px solid var(--g100)">Volume</td></tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Deal cars / month</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">2,969</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">4,516</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+52%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Disbursals — own book (inhouse)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">1,194</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">1,993</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+67%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Disbursals — CARS24 own book</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">791</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">1,740</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+120%</span></td>
+</tr>
+        <tr><td colspan="4" style="padding:5px 12px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);background:var(--cobalt-bg);border:1px solid var(--g100)">Attach & Wallet</td></tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Attach rate — inhouse (excl Pmaxx)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">40%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">44%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+4pp</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Bajaj penetration % (of inhouse)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">47%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">25%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--neg-bg);color:var(--neg);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">-22pp (co-lending shift)</span></td>
+</tr>
+        <tr><td colspan="4" style="padding:5px 12px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);background:var(--cobalt-bg);border:1px solid var(--g100)">Loan Sizing</td></tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">ASP (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">₹5.69L</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹4.82L</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--neg-bg);color:var(--neg);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">-15% ⚠</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">ALP — inhouse (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">₹5.26L</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹4.87L</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--neg-bg);color:var(--neg);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">-7% ⚠</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Weighted avg LTV</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">91.9%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">100.0%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--neg-bg);color:var(--neg);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+810 bps ⚠</span></td>
+</tr>
+        <tr><td colspan="4" style="padding:5px 12px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);background:var(--cobalt-bg);border:1px solid var(--g100)">Margins & Income</td></tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">CF gross margin %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">16.1%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">21.9%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+580 bps</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Income per disbursal (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">₹84,525</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹1,06,596</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+26%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">CF VAS income %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">4.42%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">5.78%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+136 bps</span></td>
+</tr>
+        <tr><td colspan="4" style="padding:5px 12px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);background:var(--cobalt-bg);border:1px solid var(--g100)">Profitability</td></tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Inhouse EBITDA %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">7.8%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">18.2%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+1,040 bps</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">EBITDA per disbursal (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">₹41,188</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹88,590</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+115%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">COD %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">3.54%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">2.45%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">-109 bps</span></td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh"><h2>D2C Performance</h2><div class="sh-line"></div><span class="sh-tag">Apr'25 vs Jan'26</span></div>
+  <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--g100);margin-bottom:14px">
+    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+      <thead><tr style="background:var(--night)"><th style="padding:7px 12px;text-align:left;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Metric</th><th style="padding:7px 12px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Apr'25</th><th style="padding:7px 12px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Jan'26</th><th style="padding:7px 12px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;font-weight:700;border:1px solid rgba(255,255,255,.07)">Change</th></tr></thead>
+      <tbody>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Disbursals — inhouse</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">52</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">229</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+340%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Disbursals — CARS24 own book</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">37</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">193</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+422%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">ALP — inhouse (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">₹4.63L</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹5.50L</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+19%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">CF gross margin %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">10.2%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">20.5%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+1,030 bps</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Income per disbursal (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">₹47,385</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹1,12,926</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+138%</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">Inhouse EBITDA %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">-36.9%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">13.7%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">Turned positive</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">EBITDA per disbursal (₹)</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">-₹1,71,038</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">₹75,533</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">Turned positive</span></td>
+</tr>
+        <tr>
+  <td style="padding:6px 12px;font-size:11.5px;font-weight:600;border:1px solid var(--g100)">COD %</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;border:1px solid var(--g100);color:var(--g500)">5.36%</td>
+  <td style="padding:6px 12px;text-align:center;font-size:11.5px;font-weight:700;border:1px solid var(--g100)">3.48%</td>
+  <td style="padding:6px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">-188 bps</span></td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh"><h2>FY26 Themes Delivered</h2><div class="sh-line"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Customer acquisition quality</b>: A/B share ~90%, AA banking 52%, scanned banking down to 2%, C24-first offer on TOF</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Experience at scale</b>: 77% credit decisions in <2 min; 92% first-time-right at token base; real-time offer visibility on Saarathi</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Opex and profitability</b>: Opex-to-disbursal 8.2%→4%; absolute variable costs lower at 1.5x volume; CoD to sub-3%</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Risk model v6</b>: GCBL +16.5%, 90+DPD at 12MOB -54% — more approvals and better quality</span></div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Cost of funds</b>: Moved to co-lending; CoF 8.35%→8.04%; Bajaj side expenses down 84%</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>D2C scale-up</b>: 67→243 disbursals/month (3.6× in a year); EBITDA from -₹1.71L to +₹75.5K per disbursal</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Refinance seeded</b>: 0→1,552 disbursals/month by Jan'26 with ₹38.5 Cr disbursal amount</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>SMS data model live</b>: 20% customers better classified; 7% clear unlock deployed from Jul'25</span></div>
+    </div>
+  </div>
+
+  <div class="sh"><h2>Headwinds to Monitor</h2><div class="sh-line"></div><span class="sh-tag">Active risks requiring management attention</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="background:var(--neg-bg);border:1px solid rgba(229,57,53,.15);border-radius:var(--r);padding:12px 14px">
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>ASP/ALP compression</b>: Sub-₹3L car share 20%→25%; T-LTV hit 100.9% — no room to stretch LTV further</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>COD rising structurally</b>: +37.2% in Dec — higher LTV cohorts + A-bucket vintage risk</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Tenure multiplier declining</b>: 2.68→2.65; older car procurement reducing eligible tenure, compressing NIM</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Elite drag</b>: Bengaluru franchise with 26 planned deliveries and 50% attach in peril; standalone BRE not live</span></div>
+    </div>
+    <div style="background:var(--gold-bg);border:1px solid rgba(245,158,11,.15);border-radius:var(--r);padding:12px 14px">
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--gold);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Bajaj co-lending teething</b>: ~20% login drop (CA proof format); ~8% credit-to-approval drop (internal dedupe). ₹100 Cr+ delayed</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--gold);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>AI calling Amber funnel</b>: login% 26% for AI vs 33% for human; banking handoffs still manual</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--gold);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Protekt Pro attach dip</b>: 48%→37% — city-level drops in Delhi NCR, Bangalore, Ahmedabad → direct income/disbursal impact</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--gold);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>ROI deviation widened</b>: -85bps in Dec (from -60bps Oct); v6 pricing grid must tighten this</span></div>
+    </div>
+  </div>
+</div>
+  <div class="sub" id="c2c-fy27">
+  <div class="sh"><h2>FY27 North Star Targets</h2><div class="sh-line"></div><span class="sh-tag">9 metrics that define success</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
+    <div style="background:var(--cobalt-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Inhouse CF Attach (C2C)</div>
+  <div style="font-size:19px;font-weight:900;color:var(--cobalt);line-height:1">>55%</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from 45.6% today</div>
+</div>
+    <div style="background:var(--pos-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Lead to Disbursal TAT P70</div>
+  <div style="font-size:19px;font-weight:900;color:var(--pos);line-height:1"><2 hrs</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ~28+ hrs FCU today</div>
+</div>
+    <div style="background:var(--gold-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">EBITDA per Car (C2C)</div>
+  <div style="font-size:19px;font-weight:900;color:var(--gold);line-height:1">₹50K</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ₹40K today</div>
+</div>
+    <div style="background:var(--mint-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">D2C Share of Wallet</div>
+  <div style="font-size:19px;font-weight:900;color:var(--mint);line-height:1">50%</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ~35% inhouse today</div>
+</div>
+    <div style="background:var(--cobalt-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">D2C Income per Disbursal</div>
+  <div style="font-size:19px;font-weight:900;color:var(--cobalt);line-height:1">₹90K</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ~₹80K today</div>
+</div>
+    <div style="background:var(--neg-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">AI-Driven Engagement</div>
+  <div style="font-size:19px;font-weight:900;color:var(--neg);line-height:1">70%</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">of customer touchpoints</div>
+</div>
+    <div style="background:var(--gold-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Repeat / Cross-sell</div>
+  <div style="font-size:19px;font-weight:900;color:var(--gold);line-height:1">10%</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">upsold >1 product</div>
+</div>
+    <div style="background:var(--mint-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">Pmaxx → Inhouse</div>
+  <div style="font-size:19px;font-weight:900;color:var(--mint);line-height:1">50%</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">of Pmaxx portfolio to swap</div>
+</div>
+    <div style="background:var(--pos-bg);border-radius:8px;padding:11px 14px;text-align:center">
+  <div style="font-size:9.5px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">BOF Sendbacks</div>
+  <div style="font-size:19px;font-weight:900;color:var(--pos);line-height:1"><2%</div>
+  <div style="font-size:10px;color:var(--g500);margin-top:3px">from ~15% today</div>
+</div>
+  </div>
+
+  <div class="sh"><h2>Volume & P&L Targets</h2><div class="sh-line"></div><span class="sh-tag">AOP plan Mar'26 baseline → Mar'27 targets</span></div>
+  <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--g100);margin-bottom:14px">
+    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+      <thead><tr style="background:var(--night)">
+        <th style="padding:7px 14px;text-align:left;color:rgba(255,255,255,.55);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Product Line</th>
+        <th style="padding:7px 14px;text-align:center;color:rgba(255,255,255,.55);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Mar'26 Baseline</th>
+        <th style="padding:7px 14px;text-align:center;color:#6EE7B7;font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Mar'27 Target</th>
+        <th style="padding:7px 14px;text-align:center;color:#A5B4FC;font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Growth</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">C2C Sale-Purchase Disbursals</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">₹109 Cr</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--pos);border:1px solid var(--g100)">₹156 Cr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+43%</span></td></tr>
+        <tr style="background:var(--g50)"><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">D2C Marketplace Disbursals</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">₹17 Cr</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--pos);border:1px solid var(--g100)">₹34 Cr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+100%</span></td></tr>
+        <tr><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Topup / LAC (new product)</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">₹0</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--pos);border:1px solid var(--g100)">₹6.8 Cr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">New</span></td></tr>
+        <tr style="background:var(--g50)"><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">C2C Deal Cars FY27 AOP</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">—</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--cobalt);border:1px solid var(--g100)">63,300/yr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">+41% YoY</span></td></tr>
+        <tr><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">C2C Disbursals FY27 AOP (excl Pmaxx)</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">—</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--cobalt);border:1px solid var(--g100)">33,406/yr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">—</td></tr>
+        <tr style="background:var(--g50)"><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">D2C Disbursals FY27 AOP (excl Pmaxx)</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">—</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--cobalt);border:1px solid var(--g100)">7,366/yr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">3.9× FY26</span></td></tr>
+        <tr><td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Refinance Disbursals FY27 AOP</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)">1,552/mo (Jan'26)</td><td style="padding:7px 14px;text-align:center;font-weight:700;color:var(--cobalt);border:1px solid var(--g100)">17,256/yr</td><td style="padding:7px 14px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px">10× FY26 base</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh"><h2>Competitive Context</h2><div class="sh-line"></div><span class="sh-tag">C2C vs Spinny benchmark — Jan'26</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="background:var(--cobalt-bg);border:1.5px solid rgba(77,62,255,.2);border-radius:var(--r);padding:14px 16px">
+      <div style="font-size:11px;font-weight:800;color:var(--cobalt);margin-bottom:10px">C2C Jan'26</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Delivered cars/month</span><span style="font-size:11.5px;font-weight:700">4,516</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Gross margin</span><span style="font-size:11.5px;font-weight:700;color:var(--pos)">21.9%</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Inhouse disbursal share</span><span style="font-size:11.5px;font-weight:700;color:var(--pos)">89%</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">ALP</span><span style="font-size:11.5px;font-weight:700">₹4.87L</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">CoD</span><span style="font-size:11.5px;font-weight:700">2.42%</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Opex to disbursal</span><span style="font-size:11.5px;font-weight:700;color:var(--pos)">4.0%</span></div>
+      </div>
+    </div>
+    <div style="background:var(--g50);border:1.5px solid var(--g200);border-radius:var(--r);padding:14px 16px">
+      <div style="font-size:11px;font-weight:800;color:var(--g500);margin-bottom:10px">Spinny Jan'26</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Delivered cars/month</span><span style="font-size:11.5px;font-weight:700">6,137</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Gross margin</span><span style="font-size:11.5px;font-weight:700;color:var(--neg)">9.5%</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Inhouse disbursal share</span><span style="font-size:11.5px;font-weight:700;color:var(--neg)">30%</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">ALP</span><span style="font-size:11.5px;font-weight:700">₹4.50L</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">CoD</span><span style="font-size:11.5px;font-weight:700">2.4%</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:11.5px;color:var(--g600)">Opex to disbursal</span><span style="font-size:11.5px;font-weight:700">4.5%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub" id="c2c-areas">
+  <div class="sh"><h2>Attach Rate & Wallet Share</h2><div class="sh-line"></div><span class="sh-tag">The primary volume unlock — capturing more of the existing lending interest</span></div>
+  <div style="background:var(--cobalt-bg);border-radius:10px;padding:12px 16px;margin-bottom:12px;border-left:4px solid var(--cobalt)">
+    <div style="font-size:12px;font-weight:700;color:var(--cobalt);margin-bottom:6px">CF Pie Capture: ~60% of 73% loan-interest buyers captured. ~12–15% fund elsewhere — biggest volume unlock.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px">
+      <div style="background:var(--white);border-radius:7px;padding:9px 12px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--cobalt)">74.5%</div><div style="font-size:10px;color:var(--g500)">Pre-visit CA attach (48% of deliveries)</div></div>
+      <div style="background:var(--white);border-radius:7px;padding:9px 12px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--mint)">77.5%</div><div style="font-size:10px;color:var(--g500)">Same-day CA attach (44% of deliveries)</div></div>
+      <div style="background:var(--white);border-radius:7px;padding:9px 12px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--neg)">46.5%</div><div style="font-size:10px;color:var(--g500)">Post-token login attach (6.75%)</div></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Good cohort share at 14% of bookings is too low</b> — GC delivers 60% of deliveries at 75% attach. Improving GC share to 20%+ is the highest-multiplier move</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Super-prime leakage to PL</b> — high-income salaried users (785+ CIBIL, RB A) taking personal loans. A low-LTV, low-ROI embedded product is needed to capture them inhouse</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>OGL opportunity</b> — 4,125 OGL leads in Dec'25 with only 10% BC2V. If absorbed inhouse with 20% BC2V: ~74 additional deliveries and ~33 disbursals/month</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>D2C Delhi gap</b> — attach consistently below national average; must be treated as operations failure, not market characteristic</span></div>
+
+  <div class="sh"><h2>Income per Disbursal Quality</h2><div class="sh-line"></div><span class="sh-tag">Protecting and improving the value of each loan made</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+    <div style="background:var(--neg-bg);border:1px solid rgba(229,57,53,.15);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--neg);margin-bottom:7px">⚠️ Income Threats</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>ASP/ALP compression</b>: sub-₹3L share at 25% (up 5pp). Each ₹1L drop in ASP = ~₹1.5K–2K drop in income per disbursal. Procurement guardrails urgent</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>T-LTV at 100.9%</b> — ceiling hit. VAS-LTV cannot expand further. VAS inclusion in ASP is only path to increase ALP without busting LTV</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Protekt Pro attach unstable</b>: 48%→37%. Each 10pp drop = ~₹2K–3K per disbursal income impact. City-level fixes needed</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--neg);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>ROI deviation at -85bps</b> in Dec (from -60bps Oct). v6 pricing grid must tighten this</span></div>
+    </div>
+    <div style="background:var(--pos-bg);border:1px solid rgba(0,168,107,.15);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--pos);margin-bottom:7px">✓ Income Levers</div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--pos);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>VAS inclusion in car price</b>: RC charges + lifetime warranty into ASP to free LTV headroom and improve ALP</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--pos);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>v6 pricing grid</b>: individual-level risk-adjusted pricing using CIBIL bin variables and risk deciles</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--pos);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Tenure multiplier</b>: high-ASP procurement lens to maintain eligible tenure and NIM over loan life</span></div>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--pos);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>84-month tenure</b>: ~3% tenure multiplier improvement for ~15% of prime login base</span></div>
+    </div>
+  </div>
+
+  <div class="sh"><h2>Speed & BOF Conversion</h2><div class="sh-line"></div><span class="sh-tag">TAT and bottom-of-funnel leakage as conversion and trust problem</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>FCU to full completion TAT is 28 hours</b> — compressible to <1 hour with DIY journeys and auto-validations. Gap directly causing D0/D1 cash deliveries to cannibalise CF cohort</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>A2D dropping: 85.18% vs 86% peak</b> — top causes: name/address mismatch (VPD), Aadhaar-Saarathi mismatch, PAN-Aadhaar not linked, GST invalid. Each has a defined tech resolution</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>10-11% of borrowers take <70% LTV</b> — straight-through candidates (VPD/ref check unnecessary). Faster processing directly lifts A2D</span></div>
+  <div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:6px"><span style="color:var(--cobalt);font-size:11px;margin-top:2px;flex-shrink:0">▸</span><span style="font-size:12px;color:var(--g700);line-height:1.65"><b>Bajaj co-lending funnel</b>: ~75% of login drop is CA proof format; ~85% of credit-to-approval drop is Bajaj internal dedupe. Both tech-solvable</span></div>
+
+  <div class="sh"><h2>Funnel Data</h2><div class="sh-line"></div><span class="sh-tag">Quantified opportunity sizing from scrub and transaction data</span></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);margin-bottom:8px">C2C Scrub Data (Sep–Nov'25)</div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Buyers expressing loan interest</span><span style="font-weight:700;color:var(--cobalt)">73%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Inhouse capture</span><span style="font-weight:700">46%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Pmaxx capture</span><span style="font-weight:700">7.85%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">External / PL leakage</span><span style="font-weight:700;color:var(--neg)">~4.4%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Good cohort — booking share</span><span style="font-weight:700">14%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="font-size:11.5px;color:var(--g600)">Good cohort — delivery share</span><span style="font-weight:700;color:var(--pos)">60%</span></div>
+      </div>
+    </div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--cobalt);margin-bottom:8px">D2C Scrub Data</div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Buyers expressing loan interest</span><span style="font-weight:700;color:var(--cobalt)">67%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Inhouse capture (Jan'26)</span><span style="font-weight:700;color:var(--pos)">35.5%</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Gap to 50% wallet share target</span><span style="font-weight:700;color:var(--neg)">~14.5pp</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--g100)"><span style="font-size:11.5px;color:var(--g600)">Income per disbursal target</span><span style="font-weight:700">₹90K</span></div>
+        <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="font-size:11.5px;color:var(--g600)">Jan'26 inhouse share</span><span style="font-weight:700;color:var(--pos)">93%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="sub" id="c2c-pillars">
+  <div class="sh"><h2>5 Strategic Pillars — FY27 Execution Architecture</h2><div class="sh-line"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);overflow:hidden">
+  <div style="background:var(--cobalt);padding:8px 14px;display:flex;align-items:center;gap:8px">
+    <span style="background:rgba(255,255,255,.25);border-radius:5px;padding:1px 8px;font-size:11px;font-weight:800;color:#fff">P1</span>
+    <span style="font-size:12.5px;font-weight:700;color:#fff">Distribution-Led Product Development</span>
+  </div>
+  <div style="padding:10px 14px"><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Pre-stamping buyers at TOF; balloon+buyback for ATS/ASP affordability</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Low-LTV PL-type / embedded financing for super-prime leaking to PL</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">LTV policy: offer lower LTVs for banking failures</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Pre-qualified offer for every visitor; low-ROI product for higher decile</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Pmaxx TOF BRE + Elite BRE live</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Cross-sell: Refi, LAC, internal topup, car-linked credit line</div></div>
+</div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);overflow:hidden">
+  <div style="background:var(--mint);padding:8px 14px;display:flex;align-items:center;gap:8px">
+    <span style="background:rgba(255,255,255,.25);border-radius:5px;padding:1px 8px;font-size:11px;font-weight:800;color:#fff">P2</span>
+    <span style="font-size:12.5px;font-weight:700;color:#fff">Speed & Accuracy at Scale</span>
+  </div>
+  <div style="padding:10px 14px"><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Lead-to-disbursal <2hrs at P70</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">VKYC & ref-check friction elimination</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">BOF sendbacks <2%; BOF DIY for customers and sales</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Parallel processing: VPD, ref, KYC simultaneously</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Auto-validations: PAN API, GST API, chassis API, Aadhaar OTP</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Complete elimination of all email-based steps</div></div>
+</div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);overflow:hidden">
+  <div style="background:var(--gold);padding:8px 14px;display:flex;align-items:center;gap:8px">
+    <span style="background:rgba(255,255,255,.25);border-radius:5px;padding:1px 8px;font-size:11px;font-weight:800;color:#fff">P3</span>
+    <span style="font-size:12.5px;font-weight:700;color:#fff">Repeat Value</span>
+  </div>
+  <div style="padding:10px 14px"><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">RC transfer + post-disbursal visibility on customer app</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Cash loan from 3 months post car-buy</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Internal topup from 6-month vintage (₹5 Cr C2C + ₹1.8 Cr D2C/month)</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Car-linked credit line for cash purchasers</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Scrub-based re-engagement on historical loan activity</div></div>
+</div>
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);overflow:hidden">
+  <div style="background:var(--neg);padding:8px 14px;display:flex;align-items:center;gap:8px">
+    <span style="background:rgba(255,255,255,.25);border-radius:5px;padding:1px 8px;font-size:11px;font-weight:800;color:#fff">P4</span>
+    <span style="font-size:12.5px;font-weight:700;color:#fff">Risk-Adjusted Compounding</span>
+  </div>
+  <div style="padding:10px 14px"><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Swap 50% of Pmaxx portfolio inhouse at better ROA</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Individual-level risk-adjusted pricing: CIBIL bin variables + risk deciles</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Differential pricing grid across B1–B10 and beyond</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">v6 model pricing grid to close ROI deviation from -85bps to target</div></div>
+</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr;gap:10px">
+    <div style="background:var(--white);border:1px solid var(--g100);border-radius:var(--r);overflow:hidden">
+  <div style="background:#7C3AED;padding:8px 14px;display:flex;align-items:center;gap:8px">
+    <span style="background:rgba(255,255,255,.25);border-radius:5px;padding:1px 8px;font-size:11px;font-weight:800;color:#fff">P5</span>
+    <span style="font-size:12.5px;font-weight:700;color:#fff">AI at Scale</span>
+  </div>
+  <div style="padding:10px 14px"><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Propensity scoring + auto-routing + dynamic CRM campaigns</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Complete sourcing automation: call + WhatsApp bot; 70% AI-driven engagement</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">Customer 360 for agent next-best-action</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">AI bot for sales team on policy / mitigants</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">OCR + validation on every document upload</div><div style="font-size:11px;color:var(--g600);line-height:1.6;padding:3px 0;border-bottom:1px solid var(--g100)">AI-led assisted application completion with inactivity detection</div></div>
+</div>
+  </div>
+</div>
+  <div class="sub" id="c2c-projects">
+  <div class="sh"><h2>Live Projects</h2><div class="sh-line"></div><span class="sh-tag">Deployed and running in production</span></div>
+  <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--g100);margin-bottom:14px">
+    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+      <thead><tr style="background:var(--night)">
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.4);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">#</th>
+        <th style="padding:7px 14px;text-align:left;color:rgba(255,255,255,.8);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Project</th>
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.5);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Scope</th>
+        <th style="padding:7px 14px;text-align:left;color:#6EE7B7;font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Impact</th>
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.5);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Status</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">1</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Risk model v6 + BRE</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">GCBL +16.5%, 90+DPD at 12MOB -54%, 100% live Dec'25</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">2</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Bajaj co-lending</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">CoF 8.04%, ₹58L manpower saving, 50% base live</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">3</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">AI calling — Phase 1</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">10% sourcing cohort; login% 16.12% vs 16.97% human; cost reduction at scale</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">4</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Pmaxx partner pecking tool</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">88% adherence; first-login approval 11%→15%</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">5</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Assured buyback in Pmaxx</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">30% penetration; new VAS income stream</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">6</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">SMS data model</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">20% customers better classified; 7% clear unlock</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">7</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">D2C lead prioritisation</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--mint-bg);color:var(--mint);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">D2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">P0–P4 by CIBIL bucket; higher conversion without extra manpower</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">8</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Saarathi platform PAN India</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Full DIY journey; AA banking 52%; credit decisioning <2 min</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--pos-bg);color:var(--pos);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Live</span></td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh"><h2>In-Flight Projects</h2><div class="sh-line"></div><span class="sh-tag">Under execution — FY26 end through Q1 FY27</span></div>
+  <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--g100);margin-bottom:14px">
+    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+      <thead><tr style="background:var(--night)">
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.4);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">#</th>
+        <th style="padding:7px 14px;text-align:left;color:rgba(255,255,255,.8);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Project</th>
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.5);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Scope</th>
+        <th style="padding:7px 14px;text-align:left;color:#6EE7B7;font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Target Outcome</th>
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.5);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">When</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">1</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">84-month tenure launch</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">~15% login base eligible; +3% tenure multiplier for prime cohorts</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">In-Flight</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">2</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Bajaj co-lending scale to ₹100 Cr+</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Fix CA proof + internal dedupe; Phase 2 automation; full CoF benefit at scale</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Mar'26</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">3</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">Experian-based RC at TOF</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Avoid CIBIL pull on TOF for RC-identified users; cost reduction</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Feb'26</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">4</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">BOF sendback automation (FCU/RCU)</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Sendbacks <2%; TAT compression via API automations</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Q1 FY27</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">5</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">VAS inclusion in car price</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Free up LTV headroom; improve ALP — urgent</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--neg-bg);color:var(--neg);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Urgent</span></td>
+</tr>
+        <tr>
+  <td style="padding:7px 12px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">6</td>
+  <td style="padding:7px 12px;font-weight:600;border:1px solid var(--g100)">AI calling Phase 2</td>
+  <td style="padding:7px 12px;border:1px solid var(--g100);text-align:center"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 12px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Fix Amber funnel login% 26%→33%; banking handoff automation</td>
+  <td style="padding:7px 12px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Q1 FY27</span></td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sh"><h2>FY27 Project Pipeline</h2><div class="sh-line"></div><span class="sh-tag">New initiatives across the year — 10 strategic bets</span></div>
+  <div style="overflow-x:auto;border-radius:var(--r);border:1px solid var(--g100)">
+    <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+      <thead><tr style="background:var(--night)">
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.4);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">#</th>
+        <th style="padding:7px 14px;text-align:left;color:rgba(255,255,255,.8);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Project</th>
+        <th style="padding:7px 10px;text-align:center;color:rgba(255,255,255,.5);font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Scope</th>
+        <th style="padding:7px 14px;text-align:left;color:#6EE7B7;font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Strategic Intent</th>
+        <th style="padding:7px 10px;text-align:center;color:#A5B4FC;font-size:9.5px;border:1px solid rgba(255,255,255,.07)">Pillar</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">1</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Balloon + buyback product</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Lower EMI with terminal buyback; solve ATS/ASP affordability gap</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P1</span></td>
+</tr><tr style="background:var(--g50)">
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">2</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Low-LTV / embedded financing (PL-type)</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Capture high-income salaried cohort leaking to PL inhouse</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P1</span></td>
+</tr><tr>
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">3</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Commercial car financing product</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">C2C</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">408 commercial cars on platform; 500 txns/month target; new addressable market</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P1</span></td>
+</tr><tr style="background:var(--g50)">
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">4</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Cash loan (3 months post car-buy)</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Cross-sell to existing base; repeat engagement</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P3</span></td>
+</tr><tr>
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">5</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Internal topup / LAC</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">₹5 Cr C2C + ₹1.8 Cr D2C monthly by FY27; new income on existing base</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P3</span></td>
+</tr><tr style="background:var(--g50)">
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">6</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Credit line linked to car (cash purchasers)</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Revolving line against car asset; open lending to non-CF customers</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P3</span></td>
+</tr><tr>
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">7</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Pmaxx → inhouse sub-prime swap-in</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">50% of Pmaxx to migrate inhouse; better ROA than current 1%</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P4</span></td>
+</tr><tr style="background:var(--g50)">
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">8</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Customer 360 + AI next-best-action</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">70% AI-driven engagement; reduce human handling</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P5</span></td>
+</tr><tr>
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">9</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">BOF DIY + parallel processing</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">Lead → disbursal <2hrs at P70; eliminate all email steps</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P2</span></td>
+</tr><tr style="background:var(--g50)">
+  <td style="padding:7px 10px;text-align:center;font-weight:700;color:var(--g400);border:1px solid var(--g100)">10</td>
+  <td style="padding:7px 14px;font-weight:600;border:1px solid var(--g100)">Refinance scale-up</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--gold-bg);color:var(--gold);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">Both</span></td>
+  <td style="padding:7px 14px;font-size:11px;color:var(--g600);border:1px solid var(--g100)">1,552→2,916 disbursals/month; 10× FY26 base rate by Mar'27</td>
+  <td style="padding:7px 10px;text-align:center;border:1px solid var(--g100)"><span style="background:var(--cobalt-bg);color:var(--cobalt);font-size:9.5px;font-weight:700;border-radius:20px;padding:2px 9px">P1</span></td>
+</tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
 <div class="sec" id="s-dcf">
   <div class="tabbar">
-    <div class="tab active" onclick="tab('dcf','philosophy',this)">🧭 Philosophy</div>
-    <div class="tab" onclick="tab('dcf','ecosystem',this)">🌐 Ecosystem</div>
+    <div class="tab" active" onclick="tab('dcf','philosophy',this)">🧭 Philosophy</div>
+    <div class="tab active" onclick="tab('dcf','ecosystem',this)">🌐 Ecosystem</div>
     <div class="tab" onclick="tab('dcf','fy26',this)">📊 FY26 Performance</div>
     <div class="tab" onclick="tab('dcf','wallet',this)">💰 Wallet Share</div>
     <div class="tab" onclick="tab('dcf','fy27',this)">🎯 FY27 Priorities</div>
@@ -4959,6 +5698,7 @@ function tab(secId,tabId,el){
   </div>
 
   <!-- ═══ TAB 1: PHILOSOPHY ═══ -->
+
   <div class="sub active" id="dcf-philosophy">
     <div style="background:var(--night);border-radius:14px;padding:22px 28px;margin-bottom:16px;border-top:3px solid var(--cobalt)">
       <div style="font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt-l);margin-bottom:6px">VISION · 3-YEAR AMBITION</div>
@@ -5474,6 +6214,7 @@ function tab(secId,tabId,el){
   </div>
 
   <!-- PHILOSOPHY -->
+
   <div class="sub active" id="treasury-philosophy">
     <div class="sh"><h2>Treasury Philosophy — FY27</h2><div class="sh-line"></div><span class="sh-tag">3 pillars · Capital efficiency · Disciplined leverage · Diversified borrowing</span></div>
     <div style="background:var(--night);border-radius:14px;padding:22px 26px;margin-bottom:18px;border-top:3px solid var(--mint)">
@@ -5692,6 +6433,7 @@ function tab(secId,tabId,el){
   </div>
 
   <!-- PHILOSOPHY & MOATS -->
+
   <div class="sub active" id="cex-philosophy">
     <div class="sh"><h2>CeX Philosophy</h2><div class="sh-line"></div><span class="sh-tag">Designing a Scalable, Regulatory-Controlled Customer Operating System</span></div>
     <div style="background:var(--night);border-radius:14px;padding:22px 26px;margin-bottom:18px;border-top:3px solid var(--cobalt)">
@@ -5817,6 +6559,7 @@ function tab(secId,tabId,el){
   </div>
 
   <!-- PHILOSOPHY -->
+
   <div class="sub active" id="ops-philosophy">
     <div class="sh"><h2>Operations Philosophy — FY27</h2><div class="sh-line"></div><span class="sh-tag">Faster · Safer · Smarter Operations · Automation Charter</span></div>
     <div style="background:var(--night);border-radius:14px;padding:22px 26px;margin-bottom:18px;border-top:3px solid var(--mint)">
@@ -5956,6 +6699,7 @@ function tab(secId,tabId,el){
     <div class="tab" onclick="tab('finance','fy26',this)">✅ FY26 Delivered</div>
     <div class="tab" onclick="tab('finance','team',this)">👥 Team Structure</div>
   </div>
+
   <div class="sub active" id="finance-overview">
   <div style="background:var(--night);border-radius:14px;padding:20px 26px;margin-bottom:16px;border-top:3px solid var(--cobalt)">
     <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt-l);margin-bottom:4px">CFSPL FINANCE · ANNUAL OPERATING PLAN FY27</div>
@@ -6526,8 +7270,8 @@ function tab(secId,tabId,el){
 
 <div class="sec" id="s-collections">
   <div class="tabbar">
-    <div class="tab active" onclick="tab('collections','fy26kpi',this)">📊 FY'26 KPIs</div>
-    <div class="tab" onclick="tab('collections','fy26themes',this)">📋 FY'26 Themes</div>
+    <div class="tab" active" onclick="tab('collections','fy26kpi',this)">📊 FY'26 KPIs</div>
+    <div class="tab active" onclick="tab('collections','fy26themes',this)">📋 FY'26 Themes</div>
     <div class="tab" onclick="tab('collections','fy27kpi',this)">🎯 FY'27 KPIs</div>
     <div class="tab" onclick="tab('collections','fy27pillars',this)">🏛️ FY'27 Pillars</div>
     <div class="tab" onclick="tab('collections','projects',this)">🛠️ Projects</div>
@@ -6535,6 +7279,7 @@ function tab(secId,tabId,el){
   </div>
 
   <!-- ═══ FY26 KPIs ═══ -->
+
   <div class="sub active" id="collections-fy26kpi">
     <div class="sh"><h2>FY'26 Collections KPIs</h2><div class="sh-line"></div><span class="sh-tag">Four critical targets driving collections excellence</span></div>
     <div class="cards c4" style="margin-bottom:18px">
@@ -7064,6 +7809,7 @@ function tab(secId,tabId,el){
   </div>
 
   <!-- ═══ OVERVIEW ═══ -->
+
   <div class="sub active" id="compliance-overview">
     <div style="background:var(--night);border-radius:14px;padding:20px 26px;margin-bottom:16px;border-top:3px solid var(--cobalt)">
       <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt-l);margin-bottom:4px">LEGAL &amp; COMPLIANCE · STRATEGIC INTENT FY27</div>
@@ -8066,6 +8812,7 @@ function tab(secId,tabId,el){
     <div class="tab" onclick="tab('buyback','b2b',this)">🏢 B2B</div>
     <div class="tab" onclick="tab('buyback','global',this)">🌐 Global Players</div>
   </div>
+
   <div class="sub active" id="buyback-overview">
     <div style="background:var(--night);border-radius:14px;padding:20px 26px;margin-bottom:16px;border-top:3px solid var(--cobalt)">
       <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt-l);margin-bottom:4px">BUYBACK · RVI · CHANNEL STRATEGY</div>
@@ -9054,14 +9801,15 @@ function tab(secId,tabId,el){
 
 <div class="sec" id="s-hr">
   <div class="tabbar">
-    <div class="tab active" onclick="tab('hr','philosophy',this)">🧭 Philosophy &amp; Moats</div>
-    <div class="tab" onclick="tab('hr','themes',this)">🎯 6 Strategic Themes</div>
+    <div class="tab" active" onclick="tab('hr','philosophy',this)">🧭 Philosophy &amp; Moats</div>
+    <div class="tab active" onclick="tab('hr','themes',this)">🎯 6 Strategic Themes</div>
     <div class="tab" onclick="tab('hr','projects',this)">🛠️ Projects &amp; KPIs</div>
     <div class="tab" onclick="tab('hr','priorities',this)">⚡ Execution Priorities</div>
     <div class="tab" onclick="tab('hr','northstars',this)">⭐ North Stars</div>
   </div>
 
   <!-- PHILOSOPHY -->
+
   <div class="sub active" id="hr-philosophy">
     <div style="background:var(--night);border-radius:14px;padding:20px 26px;margin-bottom:16px;border-top:3px solid var(--cobalt)">
       <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt-l);margin-bottom:5px">PEOPLE &amp; CULTURE · MISSION</div>
@@ -9259,6 +10007,7 @@ function tab(secId,tabId,el){
     <div class="tab" onclick="tab('product','ai',this)">🤖 AI Adoption</div>
     <div class="tab" onclick="tab('product','platform',this)">🏗️ Platform &amp; Arch</div>
   </div>
+
 
   <div class="sub active" id="product-philosophy" >
   <div style="background:var(--cobalt-bg);border-radius:14px;padding:18px 22px;margin-bottom:14px;border:1px solid rgba(77,62,255,.12);border-top:3px solid var(--cobalt)">
